@@ -1,1 +1,31 @@
 
+# LAB Number 1
+# Data Aquisition
+import pandas as pd
+import numpy as np
+Dataframe = pd.read_csv("https://archive.ics.uci.edu/ml/machine-learning-databases/autos/imports-85.data", header = None)
+# Read Csv
+Dataframe.head(5)
+Dataframe.tail(5)
+headers = ["symboling","normalized-losses","make","fuel-type","aspiration", "num-of-doors","body-style",
+         "drive-wheels","engine-location","wheel-base", "length","width","height","curb-weight","engine-type",
+         "num-of-cylinders", "engine-size","fuel-system","bore","stroke","compression-ratio","horsepower",
+         "peak-rpm","city-mpg","highway-mpg","price"]
+Dataframe.columns = headers
+Dataframe
+Dataframe.head(10)
+Dataframe
+# Remove Missing values:
+df =  Dataframe.replace('?',np.NaN)
+Dataframe.dtypes
+df1 = df.dropna(subset=["price"], axis = 0)
+# axis=0 means that the contents along the entire row will be dropped wherever the entity 'price' is found to be NaN
+print(df.columns)
+df.to_csv("C:\\Users\\Abdul Aziz\\khan.csv", index = False)
+# Data Types
+print(df.dtypes)
+# Describe
+df.describe()
+df.describe(include='all')
+df.info()
+df[['length','compression-ratio']]
